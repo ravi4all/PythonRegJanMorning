@@ -19,15 +19,28 @@ def post(username, usermail):
     for posts in allPosts:
         print(posts)
 
-    userOptions()
+    userOptions(username,usermail)
 
 def viewProfile(username, usermail):
-    pass
+    print("User Profile : ")
+    print("Username : {} UserEmail : {}".format(username,usermail))
+    currentUserpost = list(filter(lambda x:x['userName'] == username, allPosts))
+    print("Your Posts : ")
+    # print(currentUserpost)
+    for currentPost in currentUserpost:
+        print("Post :",currentPost['userPost'])
+        print("Time :",currentPost['time'])
+
+    userOptions(username, usermail)
+
 
 def updateProfile(username, usermail):
     pass
 
 def deleteProfile(username, usermail):
+    pass
+
+def logout(x,y):
     pass
 
 def userOptions(username, useremail):
@@ -43,7 +56,8 @@ def userOptions(username, useremail):
         "1" : post,
         "2" : viewProfile,
         "3" : updateProfile,
-        "4" : deleteProfile
+        "4" : deleteProfile,
+        "5" : logout
     }
 
     userchoice = input("Enter your choice : ")
@@ -96,7 +110,7 @@ def read():
 while True:
     print("""
     1. Login
-    2. Regsitration
+    2. Registration
     """)
 
     user_choice = input("Enter your choice : ")
