@@ -1,4 +1,5 @@
 from datetime import datetime
+import csv
 
 users = []
 userData = {}
@@ -106,6 +107,14 @@ def register():
 def read():
     for data in users:
         print(data)
+
+    saveUser()
+
+def saveUser():
+    with open('users.csv','a',newline='') as file:
+        writer = csv.writer(file)
+
+        writer.writerow(users[-1].values())
 
 while True:
     print("""
